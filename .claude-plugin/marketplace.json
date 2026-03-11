@@ -1,0 +1,31 @@
+{
+  "name": "yuzhi-agent-skills",
+  "owner": {
+    "name": "yuzhi",
+    "email": "yefengzhiming@gmail.com"
+  },
+  "metadata": {
+    "description": "个人技能市场 - 存放自用 Claude Code Skills",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "memos-skills",
+      "description": "Memos 笔记技能集 - 直接使用捆绑的 Python 脚本与 Memos 笔记实例交互，无需安装 MCP 服务器。使用此技能列出、搜索、创建、更新、删除和标记备忘录。当用户想要处理个人笔记、保存新信息、查找过去的备忘录或使用标签组织内容时激活。",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/memos"
+      ]
+    },
+    {
+      "name": "video-understand-skill",
+      "description": "视频理解技能 - 通过分析视频内容，提供摘要、关键帧提取、情感分析等功能。适用于需要快速了解视频内容、提取重要信息或进行视频内容分析的场景。",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/video-understand"
+      ]
+    }
+  ]
+}

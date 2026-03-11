@@ -1,0 +1,11 @@
+*output*
+**/__pycache__/
+**/.venv/
+.claude/
+**/audio
+**/video
+**/audio_segments
+**/results
+**/videos
+**/.env
+uv.lock
