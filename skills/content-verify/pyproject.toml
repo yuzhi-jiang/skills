@@ -1,0 +1,13 @@
+[project]
+name = "skill-content-verify"
+version = "0.2.8"
+description = "Content verification skill — fact-check news, science claims and media content via SerpAPI"
+readme = "SKILL.md"
+requires-python = ">=3.11"
+dependencies = [
+    "python-dotenv>=1.0.0",
+    "serpapi>=0.1.5",
+]
+
+[tool.uv]
+package = false
