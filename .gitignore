@@ -9,3 +9,4 @@
 **/videos
 **/.env
 uv.lock
+.DS_Store

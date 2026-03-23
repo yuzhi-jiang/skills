@@ -35,6 +35,15 @@
       "skills": [
         "./skills/sftp-file-manager"
       ]
+    },
+    {
+      "name": "content-verify",
+      "description": "内容验证技能 - 验证文本、图像或其他内容的真实性和准确性。适用于需要确保信息可靠性、检测虚假内容或验证数据来源的场景。",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/content-verify"
+      ]
     }
   ]
 }
