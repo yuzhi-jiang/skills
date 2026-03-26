@@ -27,10 +27,17 @@ metadata: {"openclaw": {"requires": {"bins": ["uv"]}, "env": ["FILE_PROTOCOL", "
 
 ## 依赖
 
-在技能目录执行：
+在技能目录执行（固定 Python 3.12）：
 
 ```bash
-uv sync
+uv sync --python 3.12
+```
+
+可选检查：
+
+```bash
+uv --version
+uv python list
 ```
 
 ## 配置
@@ -94,10 +101,12 @@ uv run scripts/sftp_files.py --protocol ftp delete --remote "upload/a.txt"
 - 查看 NAS 目录内容
 
 执行流程：
-1. 确认连接参数（`host/user/password` 或 `key-file`）。
-2. 执行对应命令。
-3. 将 JSON 输出整理成摘要，重点展示状态、源路径、目标路径。
-4. 目录类删除操作保持谨慎，确认后使用 `--recursive`。
+1. 检查 `uv` 可用（`uv --version`）。
+2. 同步依赖（`uv sync --python 3.12`）。
+3. 确认连接参数（`host/user/password` 或 `key-file`）。
+4. 执行对应命令。
+5. 将 JSON 输出整理成摘要，重点展示状态、源路径、目标路径。
+6. 目录类删除操作保持谨慎，确认后使用 `--recursive`。
 
 ## 常见问题
 

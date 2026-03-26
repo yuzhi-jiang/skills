@@ -8,6 +8,21 @@ metadata: {"openclaw": {"requires": {"bins": ["uv"], "env": ["OPENAI_API_KEY"]},
 
 使用大模型理解视频内容的skill。
 
+## 依赖
+
+在技能目录执行（固定 Python 3.12）：
+
+```bash
+uv sync --python 3.12
+```
+
+可选检查：
+
+```bash
+uv --version
+uv python list
+```
+
 ## 使用方法
 
 ### 基本命令
@@ -19,10 +34,17 @@ cd video-understand
 cp scripts/.env.example scripts/.env
 # 然后编辑 scripts/.env 填入真实值
 
-python scripts/understand.py --video "<视频URL>" --prompt "<提示词>"
+uv run scripts/understand.py --video "<视频URL>" --prompt "<提示词>"
 ```
 
-说明：脚本会自动读取 `scripts/.env`，同时也支持系统环境变量。
+PowerShell（Windows）：
+```powershell
+Copy-Item scripts/.env.example scripts/.env
+# 然后编辑 scripts/.env 填入真实值
+uv run scripts/understand.py --video "<视频URL>" --prompt "<提示词>"
+```
+
+说明：脚本会自动读取 `scripts/.env`，同时也支持系统环境变量。运行前请先确认已配置 `OPENAI_API_KEY`。
 
 ### 参数说明
 
@@ -46,23 +68,33 @@ python scripts/understand.py --video "<视频URL>" --prompt "<提示词>"
 
 ```bash
 # 描述视频内容
-python scripts/understand.py \
+uv run scripts/understand.py \
   --video "https://example.com/video.mp4" \
   --prompt "描述这个视频的内容"
 
 # 提取并翻译字幕
-python scripts/understand.py \
+uv run scripts/understand.py \
   --video "https://example.com/video.mp4" \
   --prompt "提取视频中的语音字幕并翻译为中文，只要翻译后的文本"
 
 # 使用自定义模型和API
-python scripts/understand.py \
+uv run scripts/understand.py \
   --video "https://example.com/video.mp4" \
   --api-key "sk-xxxxx" \
   --base-url "https://api.openai.com/v1" \
   --model "gpt-4o" \
   --prompt "详细描述这个视频"
 ```
+
+## Agent 执行说明
+
+执行流程：
+1. 检查 `uv` 可用（`uv --version`）。
+2. 同步依赖（`uv sync --python 3.12`）。
+3. 检查 `OPENAI_API_KEY` 已配置（环境变量、`scripts/.env` 或 `--api-key`）。
+4. 若缺少 API Key，先提示用户配置后再继续。
+5. 按需求构造 `uv run scripts/understand.py` 命令并执行。
+6. 输出结果时优先总结视频关键信息，不直接堆叠原始返回。
 
 ## 环境变量
 
@@ -79,6 +111,13 @@ python scripts/understand.py \
 export OPENAI_API_KEY="sk-xxxxx"           # API密钥
 export OPENAI_BASE_URL="https://api.siliconflow.cn/v1"  # API地址
 export VIDEO_MODEL="Qwen/Qwen3.5-35B-A3B"   # 模型名称
+```
+
+PowerShell（Windows）：
+```powershell
+$env:OPENAI_API_KEY="sk-xxxxx"  # API密钥
+$env:OPENAI_BASE_URL="https://api.siliconflow.cn/v1"  # API地址
+$env:VIDEO_MODEL="Qwen/Qwen3.5-35B-A3B"  # 模型名称
 ```
 
 ## 注意事项

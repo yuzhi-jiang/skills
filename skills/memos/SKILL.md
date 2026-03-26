@@ -9,6 +9,21 @@ metadata: { "openclaw": { "requires": { "bins": [ "uv" ], "env": [ "MEMOS_URL", 
 
 This skill communicates with [Memos](https://usememos.com/) directly through its REST API using the bundled script `scripts/memos.py`. **No MCP server installation is required** — run commands with `uv`.
 
+## Dependencies
+
+Run in the skill directory (pin Python 3.12):
+
+```bash
+uv sync --python 3.12
+```
+
+Optional checks:
+
+```bash
+uv --version
+uv python list
+```
+
 ## First-time Setup
 
 The script needs two pieces of information: your Memos instance URL and your API key.
@@ -23,12 +38,23 @@ Copy `scripts/.env.example` to `scripts/.env`, then fill in your values:
 cp scripts/.env.example scripts/.env
 ```
 
+PowerShell (Windows):
+```powershell
+Copy-Item scripts/.env.example scripts/.env
+```
+
 The script auto-loads `scripts/.env`.
 
 **Option C — Shell environment variables:**
 ```bash
 export MEMOS_URL=https://your-memos-instance-url
 export MEMOS_API_KEY=your-memos-api-key
+```
+
+PowerShell (Windows):
+```powershell
+$env:MEMOS_URL="https://your-memos-instance-url"
+$env:MEMOS_API_KEY="your-memos-api-key"
 ```
 
 **Option D — CLI flags on every command:**
@@ -104,10 +130,12 @@ Example: `uv run scripts/memos.py delete-tag G3o72r9oijTWFxy9ueWzW7 draft`
 
 When a user wants to interact with their Memos:
 
-1. **Check credentials** — If `MEMOS_URL` or `MEMOS_API_KEY` are not set, ask the user and help them configure one of the two options above.
-2. **Run the script** using the Bash tool with the appropriate command. All output is JSON.
-3. **Present results** in a readable format — summarize memo content rather than dumping raw JSON.
-4. **Memo ID format** — Always use the short ID `G3o72r9oijTWFxy9ueWzW7`, not the prefixed form `memos/G3o72r9oijTWFxy9ueWzW7`. The script handles both automatically.
+1. **Check uv** — confirm `uv` is available (`uv --version`).
+2. **Sync dependencies** — run `uv sync --python 3.12` before first use in a fresh environment.
+3. **Check credentials** — if `MEMOS_URL` or `MEMOS_API_KEY` are not set, ask the user and help them configure one option above.
+4. **Run the script** using the Bash tool with the appropriate command. All output is JSON.
+5. **Present results** in a readable format — summarize memo content rather than dumping raw JSON.
+6. **Memo ID format** — always use the short ID `G3o72r9oijTWFxy9ueWzW7`, not the prefixed form `memos/G3o72r9oijTWFxy9ueWzW7`. The script handles both automatically.
 
 ### Visibility Options
 

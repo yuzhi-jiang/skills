@@ -12,6 +12,8 @@ metadata: {"openclaw": {"requires": {"bins": ["uv"], "env": ["SERPAPI_API_KEY"]}
 
 脚本需要 SerpAPI API Key（[serpapi.com](https://serpapi.com) 免费套餐每月 100 次）。
 
+运行前请先确认已配置 `SERPAPI_API_KEY`，否则无法执行网络检索。
+
 **方式 A — OpenClaw env 注入（推荐）：**
 在 `~/.openclaw/.env` 中设置：
 ```
@@ -24,6 +26,12 @@ cp scripts/.env.example scripts/.env
 # 编辑 scripts/.env，填入真实值
 ```
 
+PowerShell（Windows）：
+```powershell
+Copy-Item scripts/.env.example scripts/.env
+# 编辑 scripts/.env，填入真实值
+```
+
 **方式 C — CLI 直接传入：**
 ```bash
 uv run scripts/search.py --api-key your-key "搜索词"
@@ -33,6 +41,21 @@ uv run scripts/search.py --api-key your-key "搜索词"
 - `SERPAPI_LOCATION` — 搜索地区（默认 `Austin, Texas, United States`）
 - `SERPAPI_HL` — 搜索语言（默认 `zh-cn`）
 - `SERPAPI_GL` — 搜索国家（默认 `cn`）
+
+## 依赖
+
+在技能目录执行（固定 Python 3.12）：
+
+```bash
+uv sync --python 3.12
+```
+
+可选检查：
+
+```bash
+uv --version
+uv python list
+```
 
 ## 脚本位置
 
@@ -55,6 +78,12 @@ uv run scripts/search.py "<搜索关键词>" --format json
 ```
 
 ### 验证流程（由 AI 主导）
+
+执行前流程：
+1. 检查 `uv` 可用（`uv --version`）。
+2. 同步依赖（`uv sync --python 3.12`）。
+3. 检查 `SERPAPI_API_KEY` 已配置（环境变量、`scripts/.env` 或 `--api-key`）。
+4. 若缺少 API Key，先提示用户配置后再继续。
 
 **通用内容验证：**
 1. 提取核心声称和关键实体
