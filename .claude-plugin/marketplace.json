@@ -44,6 +44,15 @@
       "skills": [
         "./skills/content-verify"
       ]
+    },
+    {
+      "name": "image-upscaler-skill",
+      "description": "图片无损放大技能 - 使用 Lanczos 重采样将图片放大至目标文件大小（默认 3MB），支持批量处理目录。适用于展板、打印、展示等需要大尺寸高清图片的场景。支持 PNG、JPEG、WebP 格式。",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/image-upscaler"
+      ]
     }
   ]
 }
