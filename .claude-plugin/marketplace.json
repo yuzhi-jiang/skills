@@ -53,6 +53,15 @@
       "skills": [
         "./skills/image-upscaler"
       ]
+    },
+    {
+      "name": "mijia-control",
+      "description": "米家智能家居控制技能 - 通过 mijiaAPI CLI 工具控制小米/米家智能设备。支持列出设备、查询/设置属性（开关、亮度、温度等）、执行场景、小爱音箱自然语言控制。当用户提到米家、智能家居、控制设备、开灯关灯、空调温度等关键词时触发。",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/mijia-control"
+      ]
     }
   ]
 }
