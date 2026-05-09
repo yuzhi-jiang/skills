@@ -62,6 +62,15 @@
       "skills": [
         "./skills/mijia-control"
       ]
+    },
+    {
+      "name": "android-sdk-setup",
+      "description": "Android SDK 环境搭建技能 - 在 Windows 上不依赖 Android Studio 安装 JDK 21 + Android SDK 命令行工具。当用户遇到 ERR_SDK_NOT_FOUND、Android SDK 找不到、cap run android 构建失败、或需要配通安卓开发环境时使用。覆盖 JDK 下载安装、SDK cmdline-tools/sdkmanager、SDK 组件安装、环境变量配置全流程。",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/android-sdk-setup"
+      ]
     }
   ]
 }
