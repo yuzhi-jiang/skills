@@ -71,6 +71,15 @@
       "skills": [
         "./skills/android-sdk-setup"
       ]
+    },
+    {
+      "name": "pgsql-setup",
+      "description": "PostgreSQL Server 安装技能 - 在 Windows 上通过 winget 或 EDB 安装器安装 PostgreSQL 服务端。当用户需要安装 PostgreSQL、pgsql、本地起 PG 实例、或遇到 pg_ctl/psql 未找到时使用。覆盖环境检查、版本选择、静默安装、服务验证、备份恢复全流程。",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/pgsql-setup"
+      ]
     }
   ]
 }
